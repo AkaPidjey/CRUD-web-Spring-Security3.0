@@ -19,15 +19,12 @@
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
+  <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+  <dependencies>
+
+    <!-- Spring Core/MVC-->
+
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
@@ -39,6 +36,8 @@
       <artifactId>spring-core</artifactId>
       <version>5.2.10.RELEASE</version>
     </dependency>
+
+    <!-- Spring ORM/JPA -->
 
     <dependency>
       <groupId>org.springframework</groupId>
@@ -64,10 +63,54 @@
       <version>2.3.0.RELEASE</version>
     </dependency>
 
+    <!-- Spring Security -->
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>5.3.5.RELEASE</version>
+    </dependency>
+
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-web</artifactId>
       <version>5.3.5.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>5.3.5.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-taglibs</artifactId>
+      <version>5.3.5.RELEASE</version>
+    </dependency>
+
+
+    <!-- Hibernate -->
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.4.23.Final</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>5.4.23.Final</version>
+    </dependency>
+
+    <!-- Framework -->
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
     </dependency>
 
     <dependency>
@@ -88,13 +131,6 @@
       <artifactId>javax.servlet-api</artifactId>
       <version>4.0.1</version>
       <scope>provided</scope>
-
-    </dependency>
-
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>5.4.23.Final</version>
     </dependency>
 
     <dependency>

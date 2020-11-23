@@ -2,14 +2,10 @@ package web.config;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import org.thymeleaf.spring5.view.ThymeleafViewResolver;
-
 import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import java.util.logging.Filter;
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -19,7 +15,6 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
         return null;
     }
 
-
     // Добавление конфигурации, в которой инициализируем ViewResolver, для корректного отображения jsp.
     @Override
     protected Class<?>[] getServletConfigClasses() {
@@ -28,16 +23,14 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
         };
     }
 
-
     /* Данный метод указывает url, на котором будет базироваться приложение */
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
 
+
     /* Фильтр который на стороне Спринга смотрит какой HTTP метод приходит */
-
-
     @Override
     public void onStartup(ServletContext aServletContext) throws ServletException {
         super.onStartup(aServletContext);

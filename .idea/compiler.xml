@@ -7,8 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="CRUD-web_1_0" />
         <module name="CRUD-web" />
+        <module name="CRUD-web_1_0" />
+        <module name="CRUD-web_1_0 Spring Security" />
+        <module name="CRUD-web-Spring-Security1.0" />
       </profile>
     </annotationProcessing>
   </component>
