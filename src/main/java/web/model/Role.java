@@ -7,11 +7,11 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 
 @Entity
-@Table(name = "roles")
+@Table(name = "roles", schema = "spring_security")
 public class Role implements GrantedAuthority {
 
     @Id
@@ -21,9 +21,17 @@ public class Role implements GrantedAuthority {
     @Column(name = "name")
     private String name;
 
-    @Transient
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
+
+    public Role(String name) {
+        this.name = name;
+    }
+
+    public Role(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     @Override
     public String getAuthority() {

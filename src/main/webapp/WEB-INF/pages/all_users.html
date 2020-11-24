@@ -6,12 +6,11 @@
 </head>
 <body>
     <table align="center" border="1">
-        <tr>
-            <th> <a th:href="@{/logout}"> <input type="submit" value="Logout"> </a> </th>
-        </tr>
+
         <tr>
             <th> <h1> ALL USERS </h1> </th>
         </tr>
+
         <tr>
             <th> <label for="name"> Name </label> </th>
             <th> <label for="lastname"> Lastname </label> </th>
@@ -20,6 +19,7 @@
             <th> <label for="delete"> Delete </label> </th>
 
         </tr>
+
         <tr th:each="user:${users}">
             <td> <a th:text="${user.getName()}" id="name"> Name </a> </td>
             <td> <a th:text="${user.getLastname()}" id="lastname"> Lastname </a> </td>
@@ -35,6 +35,11 @@
                 </a>
             </td>
         </tr>
+
+        <tr>
+            <th> <a th:href="@{/logout}"> <input type="submit" value="Logout"> </a> </th>
+        </tr>
+
     </table>
 </body>
 </html>

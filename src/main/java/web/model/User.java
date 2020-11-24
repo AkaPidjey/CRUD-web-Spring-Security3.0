@@ -8,12 +8,12 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Set;
 
-@Data
-@AllArgsConstructor
+//@Data
+//@AllArgsConstructor
 @NoArgsConstructor
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", schema = "spring_security")
 public class User implements UserDetails {
 
     @Id
@@ -53,6 +53,12 @@ public class User implements UserDetails {
     }
 
     @Override
+    public String toString() {
+        return "User: id = " + id + ", name = " + name + " " + lastname + " " + age
+                + ", login = " + login + ", password = " + passwordConfirm;
+    }
+
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;
     }
@@ -85,5 +91,65 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
