@@ -5,32 +5,46 @@
     <title>LOGIN</title>
 </head>
 <body>
-    <div>
-        <table align="center" border="1">
+    <div align="center">
+        <div>
+            <tr>
+                <th>
+                    <h1> LOGIN </h1>
+                </th>
+            </tr>
+        </div>
+
+        <div>
+            <tr>
+                <th>
+                    <h2> Enter your login and password</h2>
+                </th>
+            </tr>
+        </div>
+
+        <div>
             <form method="post" action="/login">
-                <tr>
-                    <th>
-                       <h1 align="center"> Enter your login and password</h1>
-                    </th>
-                </tr>
+                <div>
+                    <table border="1">
+                        <tr>
+                            <th><label for="login"> Login: </label></th>
+                            <th><input name="login" id="login"></th>
+                        </tr>
 
-                <tr>
-                    <th><label for="login"> Login: </label></th>
-                    <th><input name="login" id="login"></th>
-
-                </tr>
-
-                <tr>
-                    <th><label for="password"> Password: </label></th>
-                    <th><input name="password" id="password"></th>
-                </tr>
-
-                <tr>
-                    <th><input type="submit" value="Enter"></th>
-                </tr>
-
+                        <tr>
+                            <th><label for="password"> Password: </label></th>
+                            <th><input name="password" id="password"></th>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <div>
+                    <tr>
+                        <th><input type="submit" value="Enter"></th>
+                    </tr>
+                </div>
             </form>
-        </table>
+        </div>
     </div>
 </body>
 </html>

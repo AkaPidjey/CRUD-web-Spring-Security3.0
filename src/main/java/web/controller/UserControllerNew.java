@@ -1,29 +1,25 @@
 package web.controller;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import web.model.User;
 import web.service.UserService;
 
 @Data
 @NoArgsConstructor
 
 @Controller
-@RequestMapping("/")
-public class HomeController {
-
-    private UserService userService;
+public class UserControllerNew {
 
     @Autowired
-    public HomeController(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
 
     @GetMapping("/login")
     public String login() {
@@ -45,4 +41,14 @@ public class HomeController {
         userService.createNewUser(name, lastname, age, login, password, role);
         return "redirect:/new_user";
     }
+
+    @GetMapping("/user")
+    public ModelAndView showUser() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user_page");
+        modelAndView.addObject("user", user);
+        return modelAndView;
+    }
+
 }
