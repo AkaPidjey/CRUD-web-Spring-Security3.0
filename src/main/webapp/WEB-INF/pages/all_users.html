@@ -28,12 +28,12 @@
                     <td> <a th:text="${user.getAge()}" id="age"> Age </a> </td>
                     <td>
                         <a th:href="@{/admin/{id}(id=${user.getId()})}" id="user_page">
-                            <input type="submit" value="Show/Edit">
+                            <input type="submit" value="SHOW / EDIT">
                         </a>
                     </td>
                     <td>
                         <a th:href="@{/admin/all_users/remove_user/{id}(id=${user.getId()})}" id="delete">
-                            <input type="submit" value="Delete">
+                            <input type="submit" value="DELETE">
                         </a>
                     </td>
                 </tr>
@@ -42,7 +42,7 @@
         <br>
         <div>
             <tr>
-                <th> <a th:href="@{/logout}"> <input type="submit" value="Logout"> </a> </th>
+                <th> <a th:href="@{/logout}"> <input type="submit" value="LOGOUT"> </a> </th>
             </tr>
         </div>
 

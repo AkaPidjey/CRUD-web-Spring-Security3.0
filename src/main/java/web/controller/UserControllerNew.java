@@ -1,7 +1,6 @@
 package web.controller;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -13,13 +12,17 @@ import web.model.User;
 import web.service.UserService;
 
 @Data
-@NoArgsConstructor
 
 @Controller
 public class UserControllerNew {
 
+
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UserControllerNew(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/login")
     public String login() {
