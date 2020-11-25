@@ -37,10 +37,17 @@ public class AdminControllerNew {
     }
 
     @PostMapping("/{id}")
-    public String editUser(@ModelAttribute("user") User user) {
-        userService.editUser(user);
+    public String editUser(@ModelAttribute("user") User user,
+                           @PathVariable("id") Long id) {
+        userService.editUser(id, user);
         return "edit_page";
     }
+
+//    @PostMapping("/{id}")
+//    public String editUser(@ModelAttribute("user") User user) {
+//        userService.editUser(user);
+//        return "edit_page";
+//    }
 
     @GetMapping("/all_users/remove_user/{id}")
     public String deleteUser(@PathVariable("id") Long id) {

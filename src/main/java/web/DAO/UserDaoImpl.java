@@ -1,8 +1,5 @@
 package web.DAO;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
@@ -15,10 +12,6 @@ import javax.persistence.PersistenceContext;
 import java.util.HashSet;
 import java.util.List;
 
-//@Data
-//@AllArgsConstructor
-//@NoArgsConstructor
-
 @Repository
 public class UserDaoImpl implements UserDao {
 
@@ -28,7 +21,6 @@ public class UserDaoImpl implements UserDao {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    //--> New methods @link UserDao interface
 
     @Override
     @Transactional
@@ -48,12 +40,30 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     @Transactional
-    public void editUser(User user) {
-        user.setPasswordConfirm(user.getPassword());
-        user.setPassword(passwordEncoder.encode(user.getPasswordConfirm()));
-        user.setRoles(getUserByLogin(user.getLogin()).getRoles());
-        entityManager.merge(user);
+    public void editUser(Long id, User updateUser) {
+        User userToBeUpdate = getUser(id);
+        userToBeUpdate.setName(updateUser.getName());
+        userToBeUpdate.setLastname(updateUser.getLastname());
+        userToBeUpdate.setAge(updateUser.getAge());
+        userToBeUpdate.setLogin(updateUser.getLogin());
+        updateUser.setPasswordConfirm(updateUser.getPassword());
+        updateUser.setPassword(passwordEncoder.encode(updateUser.getPasswordConfirm()));
+        updateUser.setRoles(getUserByLogin(updateUser.getLogin()).getRoles());
+        updateUser.setName(userToBeUpdate.getName());
+        updateUser.setLastname(userToBeUpdate.getLastname());
+        updateUser.setAge(userToBeUpdate.getAge());
+        updateUser.setLogin(userToBeUpdate.getLogin());
+        entityManager.merge(updateUser);
     }
+
+//    @Override
+//    @Transactional
+//    public void editUser(User user) {
+//        user.setPasswordConfirm(user.getPassword());
+//        user.setPassword(passwordEncoder.encode(user.getPasswordConfirm()));
+//        user.setRoles(getUserByLogin(user.getLogin()).getRoles());
+//        entityManager.merge(user);
+//    }
 
     @Override
     @Transactional
@@ -86,39 +96,6 @@ public class UserDaoImpl implements UserDao {
         return (Role) entityManager.createQuery("SELECT r FROM Role r WHERE r.name = :name")
                 .setParameter("name", name).getSingleResult();
     }
-
-
-    //--> Old methods @link UserDao interface
-
-//    @Override
-//    public List<User> index() {
-//        return entityManager.createQuery("From User").getResultList();
-//    }
-//
-//    @Override
-//    public User show(long id) {
-//        return entityManager.find(User.class, id);
-//    }
-//
-//    @Override
-//    public void save(User user) {
-//        entityManager.persist(user);
-//    }
-//
-//    @Override
-//    public void update(long id, User updateUser) {
-//        User userToBeUpdated = show(id);
-//        userToBeUpdated.setName(updateUser.getName());
-//        userToBeUpdated.setLastname(updateUser.getLastname());
-//        userToBeUpdated.setAge(updateUser.getAge());
-//    }
-//
-//    @Override
-//    public void delete(long id) {
-//        entityManager.createQuery("delete from User where id=: id")
-//                .setParameter("id", id)
-//                .executeUpdate();
-//    }
 
 
 }

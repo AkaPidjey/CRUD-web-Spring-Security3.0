@@ -1,27 +1,21 @@
 package web.service;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import web.DAO.UserDao;
 import web.model.Role;
 import web.model.User;
-
 import java.util.List;
-
-//@Data
-//@NoArgsConstructor
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserDao userDao;
+    private final UserDao userDao;
 
-    //--> New methods @link UserService interface
+    @Autowired
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @Override
     public void createNewUser(String name, String lastname, int age, String login, String password, String role) {
@@ -29,8 +23,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void editUser(User user) {
-        userDao.editUser(user);
+    public void editUser(Long id, User user) {
+        userDao.editUser(id, user);
     }
 
     @Override
@@ -58,31 +52,4 @@ public class UserServiceImpl implements UserService {
         return userDao.getRoleByName(name);
     }
 
-
-    //--> Old methods @link UserService interface
-
-//    @Override
-//    public List<User> index() {
-//        return userDao.index();
-//    }
-//
-//    @Override
-//    public User show(long id) {
-//        return userDao.show(id);
-//    }
-//
-//    @Override
-//    public void save(User user) {
-//        userDao.save(user);
-//    }
-//
-//    @Override
-//    public void update(long id, User user) {
-//        userDao.update(id, user);
-//    }
-//
-//    @Override
-//    public void delete(long id) {
-//        userDao.delete(id);
-//    }
 }

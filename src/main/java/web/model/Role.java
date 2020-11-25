@@ -2,12 +2,10 @@ package web.model;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.*;
 import java.util.Set;
 
 @Data
-//@AllArgsConstructor
 @NoArgsConstructor
 
 @Entity
