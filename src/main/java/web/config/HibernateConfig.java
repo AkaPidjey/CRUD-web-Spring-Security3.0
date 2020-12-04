@@ -21,7 +21,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories("web")
-@PropertySource(value = {"classpath:db.properties"})
+//@PropertySource(value = {"classpath:db.properties"})
 public class HibernateConfig {
 
     private final Environment environment;
@@ -63,27 +63,14 @@ public class HibernateConfig {
         return dataSource;
     }
 
-//    @Bean
-//    public DataSource dataSource() {
-//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//        dataSource.setDriverClassName(environment.getRequiredProperty("db.driver"));
-//        dataSource.setUrl(environment.getRequiredProperty("db.url"));
-//        dataSource.setUsername(environment.getRequiredProperty("db.username"));
-//        dataSource.setPassword(environment.getRequiredProperty("db.password"));
-//        return dataSource;
-//    }
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();
-
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
         properties.setProperty("hibernate.show_sql", "true");
         properties.setProperty("hibernate.format_sql", "true");
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
-//        properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
-//        properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
-//        properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
-//        properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
+
         return properties;
     }
 }
