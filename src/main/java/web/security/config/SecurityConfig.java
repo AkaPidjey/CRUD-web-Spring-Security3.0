@@ -1,4 +1,4 @@
-package web.config;
+package web.security.config;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import web.config.handler.LoginSuccessHandler;
+import web.security.handler.LoginSuccessHandler;
 
 @AllArgsConstructor
 @NoArgsConstructor

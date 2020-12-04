@@ -15,12 +15,8 @@ import web.service.UserService;
 @RequestMapping("/admin")
 public class AdminControllerNew {
 
-    private final UserService userService;
-
     @Autowired
-    public AdminControllerNew(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
 
     @GetMapping("/all_users")
     public ModelAndView getAllUsers() {
@@ -32,26 +28,19 @@ public class AdminControllerNew {
 
     @GetMapping("/{id}")
     public String getUser(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", userService.getUser(id));
+        model.addAttribute("user", userService.getUserById(id).get());
         return "edit_page";
     }
 
     @PostMapping("/{id}")
-    public String editUser(@ModelAttribute("user") User user,
-                           @PathVariable("id") Long id) {
-        userService.editUser(id, user);
+    public String editUser(@ModelAttribute("user") User user) {
+        userService.editUser(user);
         return "edit_page";
     }
 
-//    @PostMapping("/{id}")
-//    public String editUser(@ModelAttribute("user") User user) {
-//        userService.editUser(user);
-//        return "edit_page";
-//    }
-
     @GetMapping("/all_users/remove_user/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
-        userService.deleteUser(id);
+        userService.deleteUserById(id);
         return "redirect:/admin/all_users";
     }
 }

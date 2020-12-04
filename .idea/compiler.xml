@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="CRUD-web-Spring-Security2.0" />
         <module name="CRUD-web" />
+        <module name="CRUD-web-Spring-Security3.0" />
         <module name="CRUD-web_1_0" />
         <module name="CRUD-web_1_0 Spring Security" />
         <module name="CRUD-web-Spring-Security1.0" />
