@@ -10,7 +10,6 @@ import web.model.User;
 import web.service.UserService;
 
 @Data
-
 @Controller
 @RequestMapping("/admin")
 public class AdminControllerNew {
